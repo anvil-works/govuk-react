@@ -62,11 +62,12 @@ const StyledParagraph = styled(ReactMarkdown)<ParagraphProps>(
  * - https://govuk-react.github.io/govuk-react/?path=/docs/paragraph
  * - https://design-system.service.gov.uk/styles/typography/
  */
-export const Paragraph: React.FC<ParagraphProps & ReactMarkdownProps> = ({
+export const Paragraph: React.FC<ParagraphProps & ReactMarkdownProps> = React.forwardRef(({
   children,
   ...props
-}: ParagraphProps & ReactMarkdownProps) => (
+}: ParagraphProps & ReactMarkdownProps, ref) => (
   <StyledParagraph
+    ref={ref}
     source={children}
     escapeHtml={false}
     skipHtml
@@ -74,7 +75,7 @@ export const Paragraph: React.FC<ParagraphProps & ReactMarkdownProps> = ({
     renderers={{ link: props.linkRenderer }}
     {...props}
   />
-);
+));
 
 export interface ParagraphProps extends WithWhiteSpaceProps, React.HTMLAttributes<HTMLDivElement> {
   /**

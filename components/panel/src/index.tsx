@@ -60,12 +60,12 @@ const StyledBody = styled('div')(typography.font({ size: 36 }));
  *
  */
 
-export const Panel: React.FC<PanelProps> = ({ title, children, ...props }: PanelProps) => (
-  <StyledPanel {...props}>
+export const Panel: React.FC<PanelProps> = React.forwardRef(({ title, children, ...props }: PanelProps, ref) => (
+  <StyledPanel {...props} ref={ref}>
     <StyledTitle>{title}</StyledTitle>
     {children && <StyledBody>{children}</StyledBody>}
   </StyledPanel>
-);
+));
 Panel.defaultProps = {
   children: undefined,
 };

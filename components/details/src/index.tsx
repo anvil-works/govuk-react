@@ -85,14 +85,14 @@ const DetailsText = styled('div')({
  * - https://govuk-react.github.io/govuk-react/?path=/docs/details
  * - https://design-system.service.gov.uk/components/details/
  */
-export const Details: React.FC<DetailsProps> = ({ summary, children, ...props }: DetailsProps) => (
-  <StyledDetails {...props}>
+export const Details: React.FC<DetailsProps> = React.forwardRef(({ summary, children, ...props }: DetailsProps, ref) => (
+  <StyledDetails {...props} ref={ref}>
     <StyledSummary>
       <SummaryText>{summary}</SummaryText>
     </StyledSummary>
     <DetailsText>{children}</DetailsText>
   </StyledDetails>
-);
+));
 
 Details.defaultProps = {
   children: undefined,

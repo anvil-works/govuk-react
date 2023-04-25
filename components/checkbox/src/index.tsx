@@ -99,8 +99,8 @@ const StyledCheckboxHint = styled(HintText)({
  * - https://design-system.service.gov.uk/components/checkboxes/
  */
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ children, className, hint, ...props }: CheckboxProps, ref) => (
-    <StyledCheckbox className={className}>
+  ({ children, className, hint, outerRef, ...props }: CheckboxProps, ref) => (
+    <StyledCheckbox className={className} ref={outerRef}>
       <StyledInput type="checkbox" {...props} ref={ref} />
       <StyledLabel>{children}</StyledLabel>
       {hint && <StyledCheckboxHint>{hint}</StyledCheckboxHint>}
@@ -124,6 +124,8 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    * CSS Classname for outermost container
    */
   className?: string;
+
+  outerRef?: React.MutableRefObject<typeof StyledCheckbox>;
 }
 
 export default Checkbox;

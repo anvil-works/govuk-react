@@ -38,14 +38,14 @@ const WarningTextWrapper = styled('strong')(typography.font({ size: 19, weight: 
  * - https://govuk-react.github.io/govuk-react/?path=/docs/warning-text
  * - https://design-system.service.gov.uk/components/warning-text/
  */
-export const WarningText: React.FC<WarningTextProps> = ({ children, ...props }: WarningTextProps) => (
-  <StyledWarningText {...props}>
+export const WarningText: React.FC<WarningTextProps> = React.forwardRef(({ children, ...props }: WarningTextProps, ref) => (
+  <StyledWarningText {...props} ref={ref}>
     <IconImportantWrapper>
       <IconImportant />
     </IconImportantWrapper>
     <WarningTextWrapper>{children}</WarningTextWrapper>
   </StyledWarningText>
-);
+));
 
 WarningText.displayName = 'WarningText';
 

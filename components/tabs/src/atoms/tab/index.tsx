@@ -66,11 +66,11 @@ const StyledHyperLink = styled('a')<TabOwnProps>(
   })
 );
 
-const Tab: TabType = (props) => (
+const Tab: TabType = React.forwardRef((props, ref) => (
   <StyledListItem>
-    <StyledHyperLink {...props} />
+    <StyledHyperLink {...props} ref={ref} />
   </StyledListItem>
-);
+));
 
 Tab.defaultProps = {
   selected: false,

@@ -47,14 +47,14 @@ const TextAreaField = styled('textarea')<{ error?: boolean }>(
  * - https://govuk-react.github.io/govuk-react/?path=/docs/text-area
  * - https://design-system.service.gov.uk/components/textarea/
  */
-export const TextArea: React.FC<TextAreaProps> = ({ children, hint, meta, input, ...props }: TextAreaProps) => (
-  <Label error={meta.touched && !!meta.error} {...props}>
+export const TextArea: React.FC<TextAreaProps> = React.forwardRef(({ children, hint, meta, input, ...props }: TextAreaProps, ref) => (
+  <Label ref={ref} error={meta.touched && !!meta.error} {...props}>
     <LabelText>{children}</LabelText>
     {hint && <HintText>{hint}</HintText>}
     {meta.touched && meta.error && <ErrorText>{meta.error}</ErrorText>}
     <TextAreaField rows={5} error={meta.touched && !!meta.error} {...input} />
   </Label>
-);
+));
 
 TextArea.defaultProps = {
   hint: undefined,

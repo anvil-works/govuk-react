@@ -27,7 +27,7 @@ const TabsContainer = styled('div')(
  * - https://govuk-react.github.io/govuk-react/?path=/docs/tabs
  * - https://design-system.service.gov.uk/components/tabs/
  */
-export const Tabs: TabsType = (props: TabsProps) => <TabsContainer {...props} />;
+export const Tabs: TabsType = React.forwardRef((props: TabsProps, ref) => <TabsContainer {...props} ref={ref}/>);
 
 Tabs.displayName = 'Tabs';
 
