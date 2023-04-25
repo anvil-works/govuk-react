@@ -72,6 +72,7 @@ const StyledLabel = styled('span')({
   },
   '::after': {
     content: "''",
+    boxSizing: 'content-box',
     position: 'absolute',
     top: '11px',
     left: '9px',
